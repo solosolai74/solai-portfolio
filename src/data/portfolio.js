@@ -12,12 +12,12 @@ export const profile = {
 
   location: "Chennai, Tamil Nadu, India",
 
-  email: "your-email@example.com",
+  email: "solai19051999@gmail.com",
 
   github: "https://github.com/solosolai74",
 
   linkedin:
-    "https://www.linkedin.com/in/YOUR_LINKEDIN_USERNAME/",
+    "https://www.linkedin.com/in/solairaj-s-798736147/",
 
   resume: "./resume.pdf",
 
