@@ -3,39 +3,39 @@ import { education, certifications } from "../data/portfolio"
 
 export default function EducationCertifications() {
   return (
-    <section id="education" className="mx-auto max-w-6xl px-6 py-24">
+    <section id="education" className="mx-auto max-w-6xl px-4 sm:px-6 py-16 sm:py-24">
       <SectionTitle
         eyebrow="Background & Credentials"
         title="Education & Certifications"
         description="Formal academic training in Computer Science Engineering alongside security and technical certifications."
       />
 
-      <div className="grid gap-10 lg:grid-cols-2">
+      <div className="grid gap-8 lg:gap-10 lg:grid-cols-2">
         {/* Education Column */}
-        <div className="space-y-6">
-          <h3 className="flex items-center gap-2 text-xl font-bold text-white">
-            <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-sm">
+        <div className="space-y-4 sm:space-y-6">
+          <h3 className="flex items-center gap-2 text-lg sm:text-xl font-bold text-white">
+            <span className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-xs sm:text-sm">
               🎓
             </span>
             Education
           </h3>
 
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {education.map((item) => (
               <div
                 key={item.degree}
-                className="glass-card glass-card-hover rounded-2xl p-6 relative overflow-hidden"
+                className="glass-card glass-card-hover rounded-2xl p-5 sm:p-6 relative overflow-hidden"
               >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                  <h4 className="text-lg font-semibold text-white">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-2">
+                  <h4 className="text-base sm:text-lg font-semibold text-white">
                     {item.degree}
                   </h4>
-                  <span className="inline-block shrink-0 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-3 py-1 text-xs font-semibold text-indigo-300">
+                  <span className="self-start sm:self-auto inline-block shrink-0 rounded-full border border-indigo-500/30 bg-indigo-500/10 px-2.5 sm:px-3 py-0.5 sm:py-1 text-[11px] sm:text-xs font-semibold text-indigo-300">
                     {item.result}
                   </span>
                 </div>
 
-                <p className="mt-2 font-medium text-cyan-400 text-sm">
+                <p className="mt-1.5 sm:mt-2 font-medium text-cyan-400 text-xs sm:text-sm">
                   {item.institution}
                 </p>
 
@@ -45,7 +45,7 @@ export default function EducationCertifications() {
                   </p>
                 )}
 
-                <div className="mt-4 flex items-center justify-between text-xs text-slate-500 pt-3 border-t border-slate-800/80">
+                <div className="mt-4 flex items-center justify-between text-[11px] sm:text-xs text-slate-500 pt-3 border-t border-slate-800/80">
                   <span>{item.location}</span>
                   <span>{item.period}</span>
                 </div>
@@ -55,34 +55,34 @@ export default function EducationCertifications() {
         </div>
 
         {/* Certifications Column */}
-        <div className="space-y-6">
-          <h3 className="flex items-center gap-2 text-xl font-bold text-white">
-            <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/20 text-sm">
+        <div className="space-y-4 sm:space-y-6">
+          <h3 className="flex items-center gap-2 text-lg sm:text-xl font-bold text-white">
+            <span className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/20 text-xs sm:text-sm">
               📜
             </span>
             Certifications & Training
           </h3>
 
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2">
             {certifications.map((cert) => (
               <div
                 key={cert.title}
-                className="glass-card glass-card-hover rounded-2xl p-5 flex flex-col justify-between"
+                className="glass-card glass-card-hover rounded-2xl p-4 sm:p-5 flex flex-col justify-between"
               >
                 <div>
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="h-2 w-2 rounded-full bg-emerald-400" />
-                    <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+                  <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
+                    <span className="h-2 w-2 rounded-full bg-emerald-400 shrink-0" />
+                    <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider text-slate-400 truncate">
                       {cert.issuer}
                     </span>
                   </div>
 
-                  <h4 className="text-base font-semibold text-white">
+                  <h4 className="text-sm sm:text-base font-semibold text-white leading-snug">
                     {cert.title}
                   </h4>
 
                   {cert.description && (
-                    <p className="mt-2 text-xs text-slate-400 leading-relaxed">
+                    <p className="mt-1.5 sm:mt-2 text-xs text-slate-400 leading-relaxed">
                       {cert.description}
                     </p>
                   )}

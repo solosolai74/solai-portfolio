@@ -47,14 +47,14 @@ export default function Navbar() {
         {/* Brand / Logo */}
         <a
           href="#home"
-          className="group flex items-center gap-3 text-lg font-bold tracking-tight text-white transition hover:opacity-90"
+          className="group flex items-center gap-2.5 sm:gap-3 text-base sm:text-lg font-bold tracking-tight text-white transition hover:opacity-90"
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-cyan-500 via-indigo-500 to-purple-600 font-extrabold text-white shadow-lg shadow-indigo-500/25 group-hover:scale-105 transition-transform">
+          <span className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-xl bg-gradient-to-tr from-cyan-500 via-indigo-500 to-purple-600 font-extrabold text-white text-sm sm:text-base shadow-lg shadow-indigo-500/25 group-hover:scale-105 transition-transform">
             S
           </span>
-          <span className="flex items-center gap-1.5 font-semibold text-slate-100">
+          <span className="flex items-center gap-1.5 font-semibold text-slate-100 truncate">
             {profile.name}
-            <span className="h-2 w-2 rounded-full bg-cyan-400 animate-pulse" />
+            <span className="h-2 w-2 shrink-0 rounded-full bg-cyan-400 animate-pulse" />
           </span>
         </a>
 
@@ -101,8 +101,9 @@ export default function Navbar() {
         {/* Mobile Hamburger Button */}
         <button
           onClick={() => setOpen(!open)}
+          aria-expanded={open}
           aria-label="Toggle navigation menu"
-          className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 bg-slate-900/80 text-slate-300 transition hover:border-slate-700 hover:text-white md:hidden"
+          className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 bg-slate-900/80 text-slate-300 transition hover:border-slate-700 hover:text-white md:hidden active:scale-95"
         >
           {open ? (
             <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -116,44 +117,50 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Drawer & Overlay */}
       {open && (
-        <div className="border-b border-slate-800/80 bg-[#050811]/95 px-6 py-6 backdrop-blur-2xl md:hidden">
-          <div className="flex flex-col gap-2">
-            {links.map(([label, id]) => (
-              <a
-                key={id}
-                href={`#${id}`}
-                onClick={() => setOpen(false)}
-                className={`rounded-xl px-4 py-3 text-sm font-medium transition ${
-                  activeSection === id
-                    ? "bg-slate-800 text-cyan-400"
-                    : "text-slate-300 hover:bg-slate-900 hover:text-white"
-                }`}
-              >
-                {label}
-              </a>
-            ))}
-            <div className="mt-4 flex gap-3 pt-3 border-t border-slate-800/80">
-              <a
-                href={profile.github}
-                target="_blank"
-                rel="noreferrer"
-                className="flex-1 rounded-xl border border-slate-800 bg-slate-900/60 py-2.5 text-center text-xs font-medium text-slate-300"
-              >
-                GitHub
-              </a>
-              <a
-                href={profile.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                className="flex-1 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 py-2.5 text-center text-xs font-semibold text-white"
-              >
-                LinkedIn
-              </a>
+        <>
+          <div
+            className="fixed inset-0 top-[60px] bg-slate-950/70 backdrop-blur-sm md:hidden z-40"
+            onClick={() => setOpen(false)}
+          />
+          <div className="relative z-50 border-b border-slate-800/80 bg-[#050811]/95 px-6 py-6 backdrop-blur-2xl md:hidden max-h-[calc(100vh-4rem)] overflow-y-auto">
+            <div className="flex flex-col gap-2">
+              {links.map(([label, id]) => (
+                <a
+                  key={id}
+                  href={`#${id}`}
+                  onClick={() => setOpen(false)}
+                  className={`rounded-xl px-4 py-3 text-sm font-medium transition ${
+                    activeSection === id
+                      ? "bg-slate-800/90 text-cyan-400 border border-slate-700/50"
+                      : "text-slate-300 hover:bg-slate-900 hover:text-white"
+                  }`}
+                >
+                  {label}
+                </a>
+              ))}
+              <div className="mt-4 flex gap-3 pt-4 border-t border-slate-800/80">
+                <a
+                  href={profile.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex-1 rounded-xl border border-slate-800 bg-slate-900/60 py-3 text-center text-xs font-medium text-slate-300 active:bg-slate-800"
+                >
+                  GitHub
+                </a>
+                <a
+                  href={profile.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex-1 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 py-3 text-center text-xs font-semibold text-white active:opacity-90"
+                >
+                  LinkedIn
+                </a>
+              </div>
             </div>
           </div>
-        </div>
+        </>
       )}
     </header>
   )
