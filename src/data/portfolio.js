@@ -3,7 +3,7 @@
 // ============================================================
 
 export const profile = {
-  name: "Solairaj",
+  name: "Solairaj S",
 
   title: "Python Full-Stack & AI Engineer",
 
